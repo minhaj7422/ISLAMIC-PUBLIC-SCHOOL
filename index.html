@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islamic Public School | Learn, Practice, Excel</title>
+<meta name="description" content="Welcome to Islamic Public School. Discover our academics, values, school life and admission information.">
+
+<style>
+:root {
+  --green: #075b37;
+  --dark: #063c28;
+  --gold: #c9a447;
+  --cream: #fbfaf5;
+  --white: #ffffff;
+  --text: #24352c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: Arial, sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+}
+a { text-decoration:none; color:inherit; }
+.topbar {
+  background:var(--dark);
+  color:white;
+  padding:9px 7%;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:13px;
+}
+header {
+  background:white;
+  padding:14px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 3px 15px #00000010;
+}
+.brand { display:flex; align-items:center; gap:12px; }
+.logo {
+  width:55px; height:55px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--green);
+  font-weight:bold;
+  font-size:19px;
+  background:#f5f8f1;
+}
+.brand h2 { color:var(--green); font-size:19px; }
+.brand small { color:#777; font-size:11px; }
+nav { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+nav a { font-size:13px; font-weight:bold; }
+nav a:hover { color:var(--gold); }
+.admission-btn {
+  background:var(--green);
+  color:white;
+  padding:11px 18px;
+  border-radius:5px;
+}
+.hero {
+  min-height:570px;
+  padding:90px 8%;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 85% 20%,#ffffff20 0 2px,transparent 3px),
+    linear-gradient(120deg,#063c28,#087347);
+  background-size:32px 32px, auto;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+.hero-content { max-width:720px; position:relative; z-index:1; }
+.tag {
+  color:#f2d98e;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
+}
+.hero h1 {
+  font-size:clamp(38px,6vw,66px);
+  line-height:1.12;
+  margin:22px 0;
+}
+.hero h1 span { color:#e7c76e; }
+.hero p { max-width:570px; color:#e4eee7; font-size:17px; }
+.hero-actions { display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+.btn {
+  padding:13px 23px;
+  border-radius:5px;
+  font-weight:bold;
+  display:inline-block;
+}
+.btn-gold { background:var(--gold); color:#163a29; }
+.btn-outline { border:1px solid white; color:white; }
+.hero-mark {
+  position:absolute;
+  right:9%; top:50%;
+  transform:translateY(-50%);
+  width:270px; height:270px;
+  border:2px solid #d5b75c;
+  border-radius:50%;
+  display:grid; place-items:center;
+  color:#e7d28b;
+  font-size:100px;
+  opacity:.7;
+}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:white;
+  padding:28px 7%;
+  text-align:center;
+  box-shadow:0 5px 20px #00000008;
+}
+.stat strong { display:block; color:var(--green); font-size:27px; }
+.stat span { font-size:13px; color:#777; }
+section { padding:80px 8%; }
+.section-heading { text-align:center; margin-bottom:42px; }
+.section-heading small { color:var(--gold); font-weight:bold; letter-spacing:3px; }
+.section-heading h2 { color:var(--green); font-size:34px; margin-top:8px; }
+.section-heading p { color:#777; margin-top:10px; }
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+.photo-placeholder {
+  min-height:310px;
+  border:2px dashed #b6c9ba;
+  border-radius:12px;
+  background:linear-gradient(135deg,#e4eee4,#f7f3e5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+  color:var(--green);
+}
+.photo-placeholder strong { font-size:19px; }
+.photo-placeholder span { font-size:13px; color:#687c6d; }
+.about-text h3 { color:var(--green); font-size:27px; margin-bottom:15px; }
+.about-text p { color:#68736b; margin-bottom:15px; }
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.feature {
+  background:white;
+  padding:30px 24px;
+  border-radius:9px;
+  border-bottom:3px solid var(--gold);
+  box-shadow:0 5px 20px #00000008;
+}
+.feature .symbol { font-size:32px; }
+.feature h3 { color:var(--green); margin:12px 0 8px; }
+.feature p { color:#777; font-size:14px; }
+.principal-grid {
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:40px;
+  align-items:center;
+  max-width:900px;
+  margin:auto;
+}
+.principal-grid .photo-placeholder { min-height:300px; }
+.principal-text h3 { color:var(--green); font-size:28px; }
+.principal-text p { color:#68736b; margin:12px 0; }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.gallery-grid .photo-placeholder { min-height:190px; }
+.notice {
+  max-width:800px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:9px;
+  border-left:4px solid var(--gold);
+}
+.notice p { color:#777; }
+.cta {
+  text-align:center;
+  background:var(--green);
+  color:white;
+  padding:65px 20px;
+}
+.cta h2 { font-size:34px; margin-bottom:12px; }
+.cta p { color:#e0eee5; margin-bottom:24px; }
+.contact-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.contact-card {
+  background:white;
+  padding:25px;
+  border-radius:8px;
+  text-align:center;
+}
+.contact-card h3 { color:var(--green); margin-bottom:8px; }
+.contact-card p { color:#777; font-size:14px; }
+footer {
+  background:#052f20;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+footer p { color:#d1dfd5; font-size:13px; margin-top:7px; }
+@media(max-width:800px) {
+  header { flex-direction:column; }
+  nav { justify-content:center; gap:12px; }
+  .hero { min-height:500px; }
+  .hero-mark { opacity:.17; right:-65px; }
+  .stats { grid-template-columns:repeat(2,1fr); gap:20px; }
+  .about-grid,.principal-grid { grid-template-columns:1fr; }
+  .features,.gallery-grid,.contact-grid { grid-template-columns:1fr; }
+  section { padding:60px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <span>Welcome to Islamic Public School</span>
+  <span>Knowledge • Character • Success</span>
+</div>
+
+<header>
+  <a href="#home" class="brand">
+    <div class="logo">IPS</div>
+    <div>
+      <h2>Islamic Public School</h2>
+      <small>LEARN • PRACTICE • EXCEL</small>
+    </div>
+  </a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#academics">Academics</a>
+    <a href="#principal">Principal</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="#admission" class="admission-btn">Admission</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="tag">WELCOME TO OUR SCHOOL</div>
+    <h1>Building Knowledge,<br><span>Character & Future.</span></h1>
+    <p>
+      Welcome to Islamic Public School. A place where
+      education, values and personal growth come together
+      to prepare students for a brighter future.
+    </p>
+    <div class="hero-actions">
+      <a href="#about" class="btn btn-gold">Discover Our School</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-mark">✦</div>
+</section>
+
+<div class="stats">
+  <div class="stat"><strong>Education</strong><span>Our Foundation</span></div>
+  <div class="stat"><strong>Values</strong><span>Our Strength</span></div>
+  <div class="stat"><strong>Growth</strong><span>Our Mission</span></div>
+  <div class="stat"><strong>Future</strong><span>Our Vision</span></div>
+</div>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="photo-placeholder">
+      <strong>School Building Photo</strong>
+      <span>Original school photograph will be added here</span>
+    </div>
+    <div class="about-text">
+      <div class="tag">ABOUT OUR INSTITUTION</div>
+      <h3>Welcome to Islamic Public School</h3>
+      <p>
+        Islamic Public School is dedicated to providing
+        quality education in a positive, caring and
+        disciplined learning environment.
+      </p>
+      <p>
+        Our aim is to encourage academic excellence,
+        good character, confidence and respect for others.
+      </p>
+      <a href="#academics" class="btn btn-gold">Explore More</a>
+    </div>
+  </div>
+</section>
+
+<section id="academics" style="background:#f0f5ef">
+  <div class="section-heading">
+    <small>WHAT WE OFFER</small>
+    <h2>Our Learning Environment</h2>
+    <p>Helping every student learn, grow and achieve.</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="symbol">📚</div>
+      <h3>Quality Education</h3>
+      <p>A supportive environment focused on learning and academic development.</p>
+    </div>
+    <div class="feature">
+      <div class="symbol">🌙</div>
+      <h3>Moral Values</h3>
+      <p>Encouraging honesty, respect, discipline and responsibility.</p>
+    </div>
+    <div class="feature">
+      <div class="symbol">🎓</div>
+      <h3>Student Growth</h3>
+      <p>Supporting creativity, confidence and all-round development.</p>
+    </div>
+  </div>
+</section>
+
+<section id="principal">
+  <div class="section-heading">
+    <small>OUR LEADERSHIP</small>
+    <h2>Message from the Headmaster</h2>
+  </div>
+  <div class="principal-grid">
+    <div class="photo-placeholder">
+      <strong>Headmaster's Photo</strong>
+      <span>Official portrait will be added here</span>
+    </div>
+    <div class="principal-text">
+      <h3>Our Headmaster</h3>
+      <p>
+        We believe that every child deserves the opportunity
+        to learn, develop and build a bright future.
+        Our school strives to provide an environment
+        that supports knowledge, discipline and character.
+      </p>
+      <p><strong>Headmaster</strong><br>Islamic Public School</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:#f0f5ef">
+  <div class="section-heading">
+    <small>OUR CAMPUS</small>
+    <h2>School Gallery</h2>
+    <p>A glimpse of our school and learning spaces.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="photo-placeholder"><strong>Classroom</strong><span>Original photo to be added</span></div>
+    <div class="photo-placeholder"><strong>School Campus</strong><span>Original photo to be added</span></div>
+    <div class="photo-placeholder"><strong>School Activities</strong><span>Original photo to be added</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-heading">
+    <small>LATEST UPDATES</small>
+    <h2>Notice Board</h2>
+  </div>
+  <div class="notice">
+    <h3 style="color:#075b37">School Announcements</h3>
+    <p>Official school notices and announcements will be published here.</p>
+    <p style="margin-top:12px">Admission updates and important dates will be added after confirmation by the school.</p>
+  </div>
+</section>
+
+<section class="cta" id="admission">
+  <h2>Admissions Information</h2>
+  <p>Interested in joining Islamic Public School? Contact the school for admission details.</p>
+  <a href="#contact" class="btn btn-gold">Enquire Now</a>
+</section>
+
+<section id="contact">
+  <div class="section-heading">
+    <small>GET IN TOUCH</small>
+    <h2>Contact Our School</h2>
+    <p>We would be happy to hear from you.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>📍 Address</h3>
+      <p>Official school address to be added</p>
+    </div>
+    <div class="contact-card">
+      <h3>📞 Phone</h3>
+      <p>Official contact number to be added</p>
+    </div>
+    <div class="contact-card">
+      <h3>✉️ Email</h3>
+      <p>Official school email to be added</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <h3>Islamic Public School</h3>
+  <p>Learn • Practice • Excel</p>
+  <p>© 2026 Islamic Public School. Demo Website.</p>
+</footer>
+
+</body>
+</html>
